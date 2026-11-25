@@ -1,5 +1,45 @@
 # Set EEG Reference
 
+<!-- brainlife-app:begin (generated from the App manifest; edit the manifest, not this block) -->
+
+> **Re-references epoched EEG data to the average reference, the REST infinity reference or chosen channels with MNE-Python set_eeg_reference.**
+
+Reads MNE epochs, calls epochs.set_eeg_reference with the chosen reference and saves the re-referenced epochs. Use it during EEG preprocessing when the recording reference is not the one wanted for analysis. REST needs channel positions (a montage) to compute the forward model.
+
+| | |
+|---|---|
+| 📥 **Inputs** | `neuro/meeg/mne/epochs` |
+| 📤 **Outputs** | `neuro/meeg/mne/epochs` |
+| 🐳 **Container** | `brainlifemeeg/mne:1.12.1` |
+| ⚙️ **Resources** | 10 GB memory · 0.25 h walltime |
+| 🔗 **Run it** | [doi.org/10.25663/brainlife.app.745](https://doi.org/10.25663/brainlife.app.745) |
+
+#### 📥 Inputs
+
+| Input | Datatype | Required | Description |
+|---|---|---|---|
+| `epoch` | `neuro/meeg/mne/epochs` | yes | Epoched EEG data (MNE -epo.fif). |
+
+#### 📤 Outputs
+
+| Output | Datatype | Description |
+|---|---|---|
+| `out_dir` | `neuro/meeg/mne/epochs` | Re-referenced epochs (meg-epo.fif). |
+
+<details>
+<summary><b>⚙️ Parameters</b> (1)</summary>
+
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `ref_ch` | enum | `average` | Reference scheme: average of all EEG channels, REST (infinity reference) or a list of channel names. Options: `average`, `REST`, `empty`. |
+
+</details>
+
+📚 **References used by this App:**
+- Gramfort A, et al. MEG and EEG data analysis with MNE-Python. Front Neurosci 7(267):1-13 (2013). [doi:10.3389/fnins.2013.00267](https://doi.org/10.3389/fnins.2013.00267)
+
+<!-- brainlife-app:end -->
+
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.745-blue.svg)](https://doi.org/10.25663/brainlife.app.745)
 
 ## Description
